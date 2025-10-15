@@ -34,11 +34,11 @@ class FlexboxScreen extends StatelessWidget {
                 color: const Color.fromARGB(65, 0, 0, 0),
               ),
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                for (int i = 0; i < 4; i++)
+                for (int i = 0; i < 3; i++)
                   CreateContainer(
                     width: 30,
                     height: 30,
@@ -59,9 +59,9 @@ class FlexboxScreen extends StatelessWidget {
                 color: const Color.fromARGB(65, 0, 0, 0),
               ),
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 for (int i = 0; i < 3; i++)
                   CreateContainer(
@@ -84,9 +84,59 @@ class FlexboxScreen extends StatelessWidget {
                 color: const Color.fromARGB(65, 154, 41, 41),
               ),
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                for (int i = 0; i < 3; i++)
+                  CreateContainer(
+                    width: 30,
+                    height: 30,
+                    margin: EdgeInsets.all(1),
+                    cajaColor: Colors.greenAccent,
+                    child: Text('$i'),
+                  ),
+              ],
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.all(6),
+            margin: EdgeInsets.all(2),
+            height: 220,
+            decoration: BoxDecoration(
+              border: Border.all(
+                width: 2,
+                color: const Color.fromARGB(65, 154, 41, 41),
+              ),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                for (int i = 0; i < 3; i++)
+                  CreateContainer(
+                    width: 30,
+                    height: 30,
+                    margin: EdgeInsets.all(1),
+                    cajaColor: Colors.greenAccent,
+                    child: Text('$i'),
+                  ),
+              ],
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.all(6),
+            margin: EdgeInsets.all(2),
+            height: 220,
+            decoration: BoxDecoration(
+              border: Border.all(
+                width: 2,
+                color: const Color.fromARGB(65, 154, 41, 41),
+              ),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 for (int i = 0; i < 3; i++)
                   CreateContainer(
