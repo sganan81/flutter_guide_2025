@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_guide_2025/screens/design_screen.dart';
-import 'package:flutter_guide_2025/screens/flexbox_screen.dart';
-import 'package:flutter_guide_2025/screens/material_screen.dart';
-import 'package:flutter_guide_2025/screens/animated_container.dart';
+import 'package:flutter_guide_2025/screens/screens.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,8 +12,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Mi primera APP',
-      home: AnimatedContainerScreen(),
       theme: ThemeData.light(),
+      routes: {
+        'home': (BuildContext context) => HomePage(),
+        'design': (BuildContext context) => DesignScreen(),
+        'flexbox': (BuildContext context) => FlexboxScreen(),
+        'animated': (BuildContext context) => AnimatedContainerScreen(),
+        'material': (BuildContext context) => MaterialScreen(),
+      },
+      initialRoute: 'home',
       debugShowCheckedModeBanner: false,
     );
   }

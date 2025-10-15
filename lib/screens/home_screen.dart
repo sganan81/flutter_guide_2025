@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_guide_2025/widgets/drawer_menu.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,48 +13,24 @@ class _HomePageState extends State<HomePage> {
   int _counter = 0;
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: DrawerMenu(),
       appBar: AppBar(
         title: Text('Hola mundo'),
         backgroundColor: Colors.blueAccent,
-        leading: GestureDetector(
-          child: Icon(Icons.menu),
-          onTap: () => print('click menu'),
-        ),
         leadingWidth: 50,
         centerTitle: true,
         toolbarHeight: 70,
-        actions: [
-          Padding(padding: const EdgeInsets.all(8.0), child: Icon(Icons.add)),
-        ],
       ),
       body: Center(
         child: Container(
-          color: Colors.grey,
+          color: const Color.fromARGB(255, 123, 209, 238),
           width: 300,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                'Cantidad de clicks: $_counter',
-                style: TextStyle(color: Colors.black),
-              ),
-              Text('Cantidad de clicks: $_counter'),
-              Text('Cantidad de clicks: $_counter'),
-              Text('Cantidad de clicks: $_counter'),
-              Text('Cantidad de clicks: $_counter'),
-              Text('Cantidad de clicks: $_counter'),
-              Text('Cantidad de clicks: $_counter'),
-              Text('Cantidad de clicks: $_counter'),
-              Text('Cantidad de clicks: $_counter'),
-              Text('Cantidad de clicks: $_counter'),
-              Text('Cantidad de clicks: $_counter'),
-              Text('Cantidad de clicks: $_counter'),
-              Text('Cantidad de clicks: $_counter'),
-              Text('Cantidad de clicks: $_counter'),
-              Text('Cantidad de clicks: $_counter'),
-              Text('Cantidad de clicks: $_counter'),
-            ],
+          height: 50,
+          alignment: Alignment.center,
+          child: Text(
+            'Cantidad de clicks: $_counter',
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.black),
           ),
         ),
       ),
