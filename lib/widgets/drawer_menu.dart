@@ -7,6 +7,15 @@ class DrawerMenu extends StatelessWidget {
     {'route': 'animated', 'title': 'Animated Cointainer', 'subtitle': ''},
     {'route': 'flexbox', 'title': 'Ejemplos de Flexbox', 'subtitle': ''},
     {'route': 'material', 'title': 'Ejemplos de Material', 'subtitle': ''},
+    {'route': 'listview', 'title': 'Ejemplos de Listas', 'subtitle': ''},
+    {'route': 'custom_list', 'title': 'Lista Custom', 'subtitle': ''},
+    {'route': 'listview_cards', 'title': 'Lista de cards', 'subtitle': ''},
+    {
+      'route': 'bottom_navigation',
+      'title': 'Bottom Navigation',
+      'subtitle': 'Scaffold',
+    },
+    {'route': 'alert', 'title': 'Alert Screen', 'subtitle': 'Android/IOS'},
   ];
 
   DrawerMenu({super.key});

@@ -5,10 +5,21 @@ class DesignScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final args =
+        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
+
+    print(args);
     return Scaffold(
       appBar: AppBar(
         title: Text('Diseño de ejemplo'),
         backgroundColor: Colors.redAccent,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: Icon(Icons.arrow_back),
+        ),
       ),
       body: Center(
         child: Container(
@@ -24,14 +35,26 @@ class DesignScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Título de prueba'),
-                        Text('SubTítulo de prueba'),
-                      ],
+                    Container(
+                      width: size.width * 0.65,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            args['title'] ?? 'Título de prueba',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          Text('SubTítulo de prueba'),
+                        ],
+                      ),
                     ),
                     Icon(Icons.star),
                     Text('31'),
