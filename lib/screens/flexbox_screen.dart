@@ -12,8 +12,7 @@ class FlexboxScreen extends StatelessWidget {
         centerTitle: true,
         actions: [
           GestureDetector(
-            onTap: () =>
-                Navigator.pushReplacementNamed(context, 'material_library'),
+            onTap: () => Navigator.pushReplacementNamed(context, 'material'),
             child: const Padding(
               padding: EdgeInsets.all(8.0),
               child: CircleAvatar(child: Icon(Icons.home)),
