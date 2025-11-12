@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_guide_2025/themes/default_theme.dart';
 
 class CustomCardWidget extends StatelessWidget {
   final String imageUrl;
@@ -17,7 +18,7 @@ class CustomCardWidget extends StatelessWidget {
     return Container(
       height: 480,
       child: Card(
-        shadowColor: Colors.greenAccent,
+        shadowColor: DefaultTheme.primary,
         elevation: 10,
         clipBehavior: Clip.antiAlias,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),

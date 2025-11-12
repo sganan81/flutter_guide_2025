@@ -16,7 +16,6 @@ class _HomePageState extends State<HomePage> {
       drawer: DrawerMenu(),
       appBar: AppBar(
         title: Text('Hola mundo'),
-        backgroundColor: Colors.blueAccent,
         leadingWidth: 50,
         centerTitle: true,
         toolbarHeight: 70,
@@ -38,7 +37,6 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: Padding(
         padding: const EdgeInsets.all(8.0),
         child: FloatingActionButton(
-          backgroundColor: Colors.blueAccent,
           child: Icon(Icons.add),
           onPressed: () {
             _counter++;

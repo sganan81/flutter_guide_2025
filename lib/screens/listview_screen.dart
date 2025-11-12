@@ -6,10 +6,7 @@ class ListViewBuilderScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Lista de Personas'),
-        backgroundColor: Colors.redAccent,
-      ),
+      appBar: AppBar(title: const Text('Lista de Personas')),
       body: ListView.builder(
         //CAmbiar a .separated para utilizar el separatorBuilder
         itemCount: 100,

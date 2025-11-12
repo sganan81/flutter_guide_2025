@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_guide_2025/helpers/preferences.dart';
 import 'package:flutter_guide_2025/screens/screens.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_guide_2025/themes/default_theme.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load();
   await Preferences.initShared();
   runApp(MyApp());
@@ -16,7 +18,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Mi primera APP',
-      theme: ThemeData.light(),
+      theme: Preferences.darkmode
+          ? DefaultTheme.darkTheme
+          : DefaultTheme.lightTheme,
       routes: {
         'home': (BuildContext context) => HomePage(),
         'design': (BuildContext context) => DesignScreen(),

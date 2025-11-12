@@ -20,7 +20,6 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _index,
         elevation: 10,
-        unselectedItemColor: Colors.grey,
         onTap: (value) {
           setState(() {
             _index = value;
