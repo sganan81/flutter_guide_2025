@@ -1,27 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_guide_2025/helpers/preferences.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-class ListItemScreen extends StatelessWidget {
-  const ListItemScreen({super.key});
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final args =
-        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
-
-    print('args $args');
 
     /*  print(size); */
     return Scaffold(
-      appBar: AppBar(title: Text('List Item Screen')),
+      appBar: AppBar(title: Text('Profile')),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            ListItemHeader(size: size, args: args),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListItemBody(args: args),
-            ),
+            ProfileHeader(size: size),
+            Padding(padding: const EdgeInsets.all(8.0), child: ProfileBody()),
           ],
         ),
       ),
@@ -29,29 +24,28 @@ class ListItemScreen extends StatelessWidget {
   }
 }
 
-class ListItemBody extends StatefulWidget {
-  final Map<String, dynamic> args;
-  const ListItemBody({super.key, required this.args});
+class ProfileBody extends StatefulWidget {
+  const ProfileBody({super.key});
 
   @override
-  State<ListItemBody> createState() => _ListItemBodyState();
+  State<ProfileBody> createState() => _ProfileBodyState();
 }
 
-class _ListItemBodyState extends State<ListItemBody> {
+class _ProfileBodyState extends State<ProfileBody> {
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         TextFormField(
-          initialValue: widget.args['name'],
+          initialValue: Preferences.name,
           decoration: InputDecoration(labelText: 'Nombre Completo'),
           onChanged: (value) {
-            print(value);
+            Preferences.name = value;
           },
           style: TextStyle(fontSize: 18),
         ),
         TextFormField(
-          initialValue: widget.args['email'], //TODO: Setear el email
+          initialValue: '', //TODO: Setear el email
           keyboardType: TextInputType.emailAddress,
           decoration: decorationInput(
             helperText: 'name@domain.com',
@@ -63,7 +57,7 @@ class _ListItemBodyState extends State<ListItemBody> {
           style: TextStyle(fontSize: 18),
         ),
         TextFormField(
-          initialValue: widget.args['telefono'], //TODO: Setear el teléfono
+          initialValue: '', //TODO: Setear el email
           keyboardType: TextInputType.phone,
           decoration: InputDecoration(
             labelText: 'Teléfono',
@@ -76,23 +70,17 @@ class _ListItemBodyState extends State<ListItemBody> {
           style: TextStyle(fontSize: 18),
         ),
         SwitchListTile.adaptive(
-          title: const Text('Favorito'),
-          value: widget.args['favorite'] ?? false,
+          title: const Text('Dark Mode'),
+          value: Preferences.darkmode,
           onChanged: (bool value) {
             setState(() {
-              widget.args['favorite'] = !widget.args['favorite'];
-              print(value);
+              print('Darkmode $value');
+              Preferences.darkmode = value;
             });
           },
         ),
         SizedBox(height: 20),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            for (int i = 1; i <= widget.args['stars']; i++)
-              Icon(Icons.star, color: Colors.yellow, size: 35),
-          ],
-        ),
+        Text(dotenv.env['VERSION'] ?? '', style: TextStyle(fontSize: 18)),
       ],
     );
   }
@@ -115,11 +103,10 @@ class _ListItemBodyState extends State<ListItemBody> {
   }
 }
 
-class ListItemHeader extends StatelessWidget {
+class ProfileHeader extends StatelessWidget {
   final Size size;
-  final Map<String, dynamic> args;
 
-  const ListItemHeader({super.key, required this.size, required this.args});
+  const ProfileHeader({super.key, required this.size});
 
   @override
   Widget build(BuildContext context) {
@@ -130,7 +117,7 @@ class ListItemHeader extends StatelessWidget {
       child: Center(
         child: CircleAvatar(
           radius: 95,
-          child: Image.asset('assets/avatars/${args['avatar']}.png'),
+          child: Image.asset('assets/images/avatar.png'),
         ),
       ),
     );

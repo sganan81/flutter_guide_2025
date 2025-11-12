@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_guide_2025/helpers/preferences.dart';
 import 'package:flutter_guide_2025/screens/screens.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+void main() async {
+  await dotenv.load();
+  await Preferences.initShared();
   runApp(MyApp());
 }
 
@@ -16,6 +20,7 @@ class MyApp extends StatelessWidget {
       routes: {
         'home': (BuildContext context) => HomePage(),
         'design': (BuildContext context) => DesignScreen(),
+        'counter': (BuildContext context) => CounterScreen(),
         'flexbox': (BuildContext context) => FlexboxScreen(),
         'animated': (BuildContext context) => AnimatedContainerScreen(),
         'material': (BuildContext context) => MaterialScreen(),
@@ -25,6 +30,7 @@ class MyApp extends StatelessWidget {
         'bottom_navigation': (BuildContext context) => BottomNavigationScreen(),
         'alert': (BuildContext context) => AlertScreen(),
         'item': (BuildContext context) => ListItemScreen(),
+        'profile': (BuildContext context) => ProfileScreen(),
       },
       initialRoute: 'home',
       debugShowCheckedModeBanner: false,

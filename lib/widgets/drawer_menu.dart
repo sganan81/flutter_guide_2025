@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 class DrawerMenu extends StatelessWidget {
   final List<Map<String, String>> _menuItems = <Map<String, String>>[
     {'route': 'home', 'title': 'Home', 'subtitle': 'Home + counter app'},
+    {
+      'route': 'counter',
+      'title': 'Counter App',
+      'subtitle': 'Manejo de estados',
+    },
     {'route': 'design', 'title': 'Diseños', 'subtitle': 'Estructura y diseño'},
     {'route': 'animated', 'title': 'Animated Cointainer', 'subtitle': ''},
     {'route': 'flexbox', 'title': 'Ejemplos de Flexbox', 'subtitle': ''},
@@ -16,6 +21,7 @@ class DrawerMenu extends StatelessWidget {
       'subtitle': 'Scaffold',
     },
     {'route': 'alert', 'title': 'Alert Screen', 'subtitle': 'Android/IOS'},
+    {'route': 'profile', 'title': 'ProfileScreen Screen', 'subtitle': ''},
   ];
 
   DrawerMenu({super.key});

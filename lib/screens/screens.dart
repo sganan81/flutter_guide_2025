@@ -1,3 +1,5 @@
+export 'package:flutter_guide_2025/screens/counter_screen.dart';
+export 'package:flutter_guide_2025/screens/profile_screen.dart';
 export 'package:flutter_guide_2025/screens/custom_list_screen.dart';
 export 'package:flutter_guide_2025/screens/custom_list_item.dart';
 export 'package:flutter_guide_2025/screens/listview_screen.dart';

@@ -43,6 +43,8 @@ class CustomListScreen extends StatelessWidget {
                 'cargo': elements[index][2],
                 'stars': elements[index][3],
                 'favorite': elements[index][4],
+                'email': elements[index][5],
+                'telefono': elements[index][6],
               },
             );
             FocusManager.instance.primaryFocus?.unfocus();
