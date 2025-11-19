@@ -47,7 +47,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
 class BodyContent extends StatelessWidget {
   final int boton;
   final List<Widget> _screens = [
-    Boton1(),
+    Center(child: Text('Home')),
     Center(child: Text('Search')),
     Center(child: Text('Profile')),
   ];
@@ -57,14 +57,5 @@ class BodyContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _screens[this.boton];
-  }
-}
-
-class Boton1 extends StatelessWidget {
-  const Boton1({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(child: Text('Home'));
   }
 }

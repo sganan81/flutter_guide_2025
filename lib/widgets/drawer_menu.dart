@@ -20,6 +20,11 @@ class DrawerMenu extends StatelessWidget {
       'title': 'Bottom Navigation',
       'subtitle': 'Scaffold',
     },
+    {
+      'route': 'bottom_navigation_provider',
+      'title': 'Bottom Navigation',
+      'subtitle': 'Provider',
+    },
     {'route': 'alert', 'title': 'Alert Screen', 'subtitle': 'Android/IOS'},
     {'route': 'profile', 'title': 'ProfileScreen Screen', 'subtitle': ''},
   ];

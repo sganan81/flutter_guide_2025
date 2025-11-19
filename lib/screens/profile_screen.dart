@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide_2025/helpers/preferences.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_guide_2025/providers/theme_provider.dart';
+import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -34,6 +36,7 @@ class ProfileBody extends StatefulWidget {
 class _ProfileBodyState extends State<ProfileBody> {
   @override
   Widget build(BuildContext context) {
+    final tema = Provider.of<ThemeProvider>(context, listen: false);
     return Column(
       children: [
         TextFormField(
@@ -76,6 +79,7 @@ class _ProfileBodyState extends State<ProfileBody> {
             setState(() {
               print('Darkmode $value');
               Preferences.darkmode = value;
+              value ? tema.setDark() : tema.setLight();
             });
           },
         ),

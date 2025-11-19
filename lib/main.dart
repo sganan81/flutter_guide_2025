@@ -1,14 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide_2025/helpers/preferences.dart';
+import 'package:flutter_guide_2025/providers/theme_provider.dart';
 import 'package:flutter_guide_2025/screens/screens.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_guide_2025/themes/default_theme.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load();
   await Preferences.initShared();
-  runApp(MyApp());
+  runApp(
+    /// Providers are above [MyApp] instead of inside it, so that tests
+    /// can use [MyApp] while mocking the providers
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => ThemeProvider(isDarkMode: Preferences.darkmode),
+        ),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -16,11 +29,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final tema = Provider.of<ThemeProvider>(context, listen: true);
+
     return MaterialApp(
       title: 'Mi primera APP',
-      theme: Preferences.darkmode
-          ? DefaultTheme.darkTheme
-          : DefaultTheme.lightTheme,
+      theme: tema.temaActual,
       routes: {
         'home': (BuildContext context) => HomePage(),
         'design': (BuildContext context) => DesignScreen(),
@@ -32,6 +45,8 @@ class MyApp extends StatelessWidget {
         'custom_list': (BuildContext context) => CustomListScreen(),
         'listview_cards': (BuildContext context) => ListViewCardScreen(),
         'bottom_navigation': (BuildContext context) => BottomNavigationScreen(),
+        'bottom_navigation_provider': (BuildContext context) =>
+            BottomNavigationProviderScreen(),
         'alert': (BuildContext context) => AlertScreen(),
         'item': (BuildContext context) => ListItemScreen(),
         'profile': (BuildContext context) => ProfileScreen(),
