@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide_2025/helpers/preferences.dart';
+import 'package:flutter_guide_2025/providers/empleados_provider.dart';
 import 'package:flutter_guide_2025/providers/theme_provider.dart';
 import 'package:flutter_guide_2025/screens/screens.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -18,6 +19,7 @@ void main() async {
         ChangeNotifierProvider(
           create: (_) => ThemeProvider(isDarkMode: Preferences.darkmode),
         ),
+        ChangeNotifierProvider(create: (_) => EmpleadosProvider(), lazy: false),
       ],
       child: const MyApp(),
     ),
@@ -43,6 +45,7 @@ class MyApp extends StatelessWidget {
         'material': (BuildContext context) => MaterialScreen(),
         'listview': (BuildContext context) => ListViewBuilderScreen(),
         'custom_list': (BuildContext context) => CustomListScreen(),
+        'lista_empleados': (BuildContext context) => ListaEmpleadosScreen(),
         'listview_cards': (BuildContext context) => ListViewCardScreen(),
         'bottom_navigation': (BuildContext context) => BottomNavigationScreen(),
         'bottom_navigation_provider': (BuildContext context) =>

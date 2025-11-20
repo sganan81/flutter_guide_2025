@@ -14,6 +14,11 @@ class DrawerMenu extends StatelessWidget {
     {'route': 'material', 'title': 'Ejemplos de Material', 'subtitle': ''},
     {'route': 'listview', 'title': 'Ejemplos de Listas', 'subtitle': ''},
     {'route': 'custom_list', 'title': 'Lista Custom', 'subtitle': ''},
+    {
+      'route': 'lista_empleados',
+      'title': 'Lista Empleados Provider',
+      'subtitle': 'Paquete HTTP ',
+    },
     {'route': 'listview_cards', 'title': 'Lista de cards', 'subtitle': ''},
     {
       'route': 'bottom_navigation',
