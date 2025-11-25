@@ -1,10 +1,12 @@
 import 'dart:convert' as converter;
 
 import 'package:flutter/material.dart';
+import 'package:flutter_guide_2025/models/empleado_model.dart';
+import 'package:flutter_guide_2025/models/lista_empleado_model.dart';
 import 'package:http/http.dart' as http;
 
 class EmpleadosProvider extends ChangeNotifier {
-  List listEmpleado = [];
+  List<Empleado> listEmpleado = [];
   int currentPage = 1;
   bool isLoading = false;
 
@@ -13,7 +15,7 @@ class EmpleadosProvider extends ChangeNotifier {
     this.getEmpleado(20);
   }
 
-  getEmpleadoLocal([int limit = 10]) async {
+  getEmpleado([int limit = 10]) async {
     try {
       isLoading = true;
       //TODO: Reemplazar localhost por una variable de entorno
@@ -23,8 +25,8 @@ class EmpleadosProvider extends ChangeNotifier {
       });
       final response = await http.get(url);
       if (response.statusCode == 200) {
-        print('ok...');
-        this.listEmpleado = converter.jsonDecode(response.body)['data'];
+        /* this.listEmpleado = converter.jsonDecode(response.body)['data']; */
+        listEmpleado = listaEmpleadosFromJson(response.body).data;
       } else {
         print('error...: ${response.statusCode}');
       }
@@ -36,7 +38,7 @@ class EmpleadosProvider extends ChangeNotifier {
     }
   }
 
-  getEmpleado([int limit = 10]) async {
+  getEmpleadoProd([int limit = 10]) async {
     try {
       isLoading = true;
       final url = Uri.https(
@@ -47,15 +49,33 @@ class EmpleadosProvider extends ChangeNotifier {
       final response = await http.get(url);
       if (response.statusCode == 200) {
         print('ok...');
-        this.listEmpleado = converter.jsonDecode(response.body);
+        /* this.listEmpleado = converter.jsonDecode(response.body); */
+        listEmpleado = listaEmpleadosFromJson(response.body).data;
       } else {
         print('error...: ${response.statusCode}');
       }
     } catch (e) {
-      print('Error al realizar la el request: $e');
+      print('Error al realizar el request: $e');
     } finally {
       isLoading = false;
       notifyListeners();
+    }
+  }
+
+  Future<Empleado?> getEmpleadoById(String id) async {
+    try {
+      final url = Uri.http('localhost:3000', '/api/v1/empleados/$id');
+      final response = await http.get(url);
+      if (response.statusCode == 200) {
+        final json = converter.jsonDecode(response.body);
+        return Empleado.fromJson(json["data"]);
+      } else {
+        print('error...: ${response.statusCode}');
+        throw Exception('Error al obtener el empleado');
+      }
+    } catch (e) {
+      print('Error al realizar la el request: $e');
+      throw Exception('Error al obtener el empleado');
     }
   }
 }
