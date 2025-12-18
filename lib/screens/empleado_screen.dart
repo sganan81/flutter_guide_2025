@@ -14,7 +14,7 @@ class EmpleadoScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final args =
         ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
-    final id = '123';
+    final id = args['id'];
     print(id);
     final empleado_provider = Provider.of<EmpleadosProvider>(context);
 
@@ -71,7 +71,7 @@ class ProfileBodyEmpleado extends StatelessWidget {
           style: TextStyle(fontSize: 18),
         ),
         TextFormField(
-          initialValue: '', //TODO: Setear el email
+          initialValue: empleado?.email, //TODO: Setear el email
           keyboardType: TextInputType.emailAddress,
           decoration: decorationInput(
             helperText: 'name@domain.com',
@@ -97,7 +97,7 @@ class ProfileBodyEmpleado extends StatelessWidget {
         ),
         SwitchListTile.adaptive(
           title: const Text('Dark Mode'),
-          value: Preferences.darkmode,
+          value: false,
           onChanged: (bool value) {},
         ),
         SizedBox(height: 20),
