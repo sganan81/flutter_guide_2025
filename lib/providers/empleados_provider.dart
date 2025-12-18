@@ -1,5 +1,5 @@
 import 'dart:convert' as converter;
-
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_guide_2025/models/empleado_model.dart';
 import 'package:flutter_guide_2025/models/lista_empleados_models.dart';
@@ -9,6 +9,7 @@ class EmpleadosProvider extends ChangeNotifier {
   List<Empleado> listEmpleado = [];
   int currentPage = 1;
   bool isLoading = false;
+  final String URL_API = dotenv.env['URL_API'].toString();
 
   EmpleadosProvider() {
     print('EmpleadosProvider...');
@@ -19,7 +20,7 @@ class EmpleadosProvider extends ChangeNotifier {
     try {
       isLoading = true;
       //TODO: Reemplazar localhost por una variable de entorno
-      final url = Uri.http('localhost:3000', '/api/v1/empleados', {
+      final url = Uri.http(URL_API, '/api/v1/empleados', {
         'page': '$currentPage',
         'limit': '$limit',
       });
