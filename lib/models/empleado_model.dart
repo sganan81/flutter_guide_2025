@@ -9,6 +9,8 @@ class Empleado {
   String company;
   String? avatar;
   String details;
+  String? phone;
+  bool active;
   String id;
 
   Empleado({
@@ -22,6 +24,8 @@ class Empleado {
     required this.company,
     this.avatar,
     required this.details,
+    this.phone,
+    required this.active,
     required this.id,
   });
 
@@ -36,6 +40,8 @@ class Empleado {
     company: json["company"],
     avatar: json["avatar"],
     details: json["details"],
+    phone: json["phone"],
+    active: json["active"],
     id: json["id"],
   );
 }
