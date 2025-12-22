@@ -46,6 +46,7 @@ class MyApp extends StatelessWidget {
         'listview': (BuildContext context) => ListViewBuilderScreen(),
         'custom_list': (BuildContext context) => CustomListScreen(),
         'lista_empleados': (BuildContext context) => ListaEmpleadosScreen(),
+        'lista_empleados_future': (BuildContext context) => ListaFutureScreen(),
         'empleado': (BuildContext context) => EmpleadoScreen(),
         'listview_cards': (BuildContext context) => ListViewCardScreen(),
         'bottom_navigation': (BuildContext context) => BottomNavigationScreen(),

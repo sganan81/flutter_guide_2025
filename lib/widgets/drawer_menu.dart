@@ -19,6 +19,11 @@ class DrawerMenu extends StatelessWidget {
       'title': 'Lista Empleados Provider',
       'subtitle': 'Paquete HTTP ',
     },
+    {
+      'route': 'lista_empleados_future',
+      'title': 'Lista Empleados Future',
+      'subtitle': 'Paquete HTTP ',
+    },
     {'route': 'listview_cards', 'title': 'Lista de cards', 'subtitle': ''},
     {
       'route': 'bottom_navigation',

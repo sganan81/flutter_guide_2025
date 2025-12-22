@@ -75,10 +75,11 @@ class EmpleadosProvider extends ChangeNotifier {
         final json = converter.jsonDecode(response.body);
         return Empleado.fromJson(json['data']);
       } else {
-        throw Exception('Error al realizar el request');
+        throw Exception('Error al realizar el request ${response.statusCode}');
       }
     } catch (e) {
       print('getEmpleadoById - Error al realizar el request: $e');
+      throw Exception('Error al realizar el request: $e');
     } finally {
       isLoading = false;
     }
